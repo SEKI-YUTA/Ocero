@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>オセロ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="board">
+      <div class="initial-w1 koma"></div>
+      <div class="initial-w2 koma"></div>
+      <div class="initial-b1 koma"></div>
+      <div class="initial-b2 koma"></div>
+    </div>
+  </div>
+  <script>
+    const Board = document.querySelector('.board');
+    let scene = [
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,1,2,0,0,0],
+      [0,0,0,2,1,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+    ]
+    //  1:黒 2:白
+    let flg = true;
+    Board.addEventListener('click', (e) => {
+      console.log(e.offsetX,e.offsetY);
+      let komaX = Math.floor((e.offsetX / 100))+1;
+      let komaY = Math.floor((e.offsetY / 100))+1;
+      let komaXe = Math.floor((e.offsetX / 100))+2;
+      let komaYe = Math.floor((e.offsetY / 100))+2;
+      let koma = document.createElement('div');
+      
+      if(scene[komaY - 1][komaX - 1] == 0) {
+        console.log("X:" + komaX);
+        console.log("Y:" + komaY);
+        koma.style.gridColumn = komaX + " / " + komaXe;
+        koma.style.gridRow = komaY + " / " + komaYe;
+        if(flg == true) {
+          koma.style.background = "#000"
+          scene[komaY - 1][komaX - 1] = 1;
+          flg = false;
+        } else {
+          koma.style.background = "#fff";
+          scene[komaY - 1][komaX - 1] = 2;
+          flg = true;
+        }
+        koma.classList.add('koma');
+        Board.appendChild(koma);
+      }
+    })
+    console.log(Board);
+  </script>
+</body>
+</html>

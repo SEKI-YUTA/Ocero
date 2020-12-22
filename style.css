@@ -1,0 +1,46 @@
+*,*::after,*::before {
+  box-sizing: border-box;
+}
+body {
+  background: gray;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board {
+  width: 800px;
+  height: 800px;
+  display: grid;
+  grid-template-columns: repeat(8, 100px);
+  grid-template-rows: repeat(8, 100px);
+  border: 1px solid #eeeeee;
+}
+.koma {
+  /* width: 100px;
+  height: 100px; */
+  border-radius: 50%;
+  margin: 5px;
+}
+.initial-w1 {
+  grid-row: 4 / 5;
+  grid-column: 5 / 6;
+  background: #fff;
+}
+.initial-w2 {
+  grid-row: 5 / 6;
+  grid-column: 4 / 5;
+  background: #fff;
+}
+.initial-b1 {
+  grid-row: 5 / 6;
+  grid-column: 5 / 6;
+  background: #000;
+}
+.initial-b2 {
+  grid-row: 4 / 5;
+  grid-column: 4 / 5;
+  background: #000;
+}
